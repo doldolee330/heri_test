@@ -1,0 +1,9 @@
+# 대용량/환경 종속 — git에는 올리지 않음 (README의 '외부 의존' 절 참조)
+data/aimuse_items_enriched_final_v6.json
+v2_model/model.safetensors
+output/
+__pycache__/
+*.pyc
+model/
+.venv/
+testset05_s2026/eval_set_05_v1.jsonl
