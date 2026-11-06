@@ -17,12 +17,12 @@
 ### 캡처 1 — 검증 데이터셋 확인 (붙임4 순서 1)
 
 ```bash
-ls testset05_s2026/검증데이터셋 | wc -l    # 648
+ls testset05_s2026/val_dataset | wc -l      # 648
 head -12 testset05_s2026/testset_list.csv  # 번호,유물ID,유물명,관람객유형
 ```
 
-파일 탐색기 캡처: `testset05_s2026/검증데이터셋/` 폴더를 열면
-"648개 항목"(유물별 근거문서 텍스트 파일)이 표시된다. Windows 탐색기
+파일 탐색기 캡처: `testset05_s2026/val_dataset/` 폴더를 열면
+"648개 항목"(유물별 근거문서 텍스트 파일, `001.txt`~`648.txt` — 번호↔유물ID 대응은 `testset_list.csv`, 각 파일 첫 줄에도 유물ID·유물명 기재)이 표시된다. Windows 탐색기
 화면이 필요하면 이 폴더를 업무용 PC로 복사해 연다.
 
 ### 캡처 2 — 시험대상 실행 (붙임4 순서 2)
@@ -70,7 +70,7 @@ python3 measure_citation_accuracy.py \
 | `generate_responses_api.py` | 해설 수집 (REST, `--resume` 중단 재개) |
 | `visualize_citation.py` | 해설-근거 하이라이트 뷰어 생성 |
 | `prepare_testset.py` | 테스트셋 구성 (무작위 추출·시드 고정) — 데이터 확인 단계 증빙 |
-| `testset05_s2026/` | 공식 테스트셋: ids·질문·목록 CSV·검증데이터셋(648 파일)·비상용 사전 수집본 |
+| `testset05_s2026/` | 공식 테스트셋: ids·질문·목록 CSV·val_dataset(근거문서 648 파일)·비상용 사전 수집본 |
 | `serving/` | 해설 서비스: run_local.sh(vLLM+Flask 기동)·app_vllm_sep_t003.py·pyshim(flash_attn 우회) |
 | `data/` | 근거문서 DB(aimuse v6, 12,976유물)·페르소나 프롬프트·도슨트 RAG |
 | `v2_model/` | 시험대상 모델(심링크: /hdd4 체크포인트-2460 + processor_config.json) |
