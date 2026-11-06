@@ -7,3 +7,4 @@ __pycache__/
 model/
 .venv/
 testset05_s2026/eval_set_05_v1.jsonl
+*.log

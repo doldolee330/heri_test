@@ -85,7 +85,7 @@ export HF_TOKEN=hf_...          # heri2026 비공개 repo 접근 토큰
 ./run_gui.sh                    # 서빙 자동 기동 + 검증 GUI (http://<서버IP>:7860)
 ```
 
-- 요구: Python 3.10+, NVIDIA GPU(80GB급, 기본 4장 TP=4 — 장수가 다르면
+- 요구: Linux + curl (Python 불필요 — setup.sh가 uv로 3.13 자동 설치), NVIDIA 드라이버 580+, NVIDIA GPU(80GB급, 기본 4장 TP=4 — 장수가 다르면
   `serving/run_local.sh`의 `--tensor-parallel-size` 조정), 외부망(설치 시에만).
 - `setup.sh`가 만든 `.venv`·`model/`이 있으면 run_gui.sh가 자동으로 그걸 쓰고,
   없으면 이 서버(rpower4)의 기존 환경 경로로 폴백한다.

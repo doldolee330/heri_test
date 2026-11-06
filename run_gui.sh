@@ -30,6 +30,12 @@ if ! curl -fsS --max-time 3 http://127.0.0.1:5000/health 2>/dev/null | grep -q '
   (cd "$BASE/serving" && MODEL_PATH="$MODEL" APP_THREADED=1 \
      setsid nohup ./run_local.sh app 0 > /tmp/t003_app.log 2>&1 < /dev/null &)
   until curl -fsS --max-time 3 http://127.0.0.1:5000/health 2>/dev/null | grep -q '"vllm_server_healthy":true'; do
+    if ! pgrep -f "vllm serve $MODEL" >/dev/null; then
+      echo; echo "[오류] vLLM 서버가 종료되었습니다. 로그(/tmp/t003_vllm.log) 마지막 부분:"
+      tail -n 15 /tmp/t003_vllm.log
+      pkill -f "app_vllm_sep_t003.py" 2>/dev/null
+      exit 1
+    fi
     printf "."; sleep 10
   done
   echo

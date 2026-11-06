@@ -29,6 +29,7 @@ case "${1:-}" in
     # flash_attn ABI 불일치 우회 (pyshim/sitecustomize.py 참조; 문제 없는 서버에서도 무해)
     export PYTHONPATH="$DIR/pyshim${PYTHONPATH:+:$PYTHONPATH}"
     export CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-$GPUS}"
+    export PATH="$(dirname "$VLLM_BIN"):$PATH"
     exec "$VLLM_BIN" serve "$MODEL" \
       --host 127.0.0.1 --port "$PORT" \
       --tensor-parallel-size 4 \
